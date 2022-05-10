@@ -2,7 +2,7 @@ public class Wristband {
     private boolean light_sw;
     private boolean lock;
     private Emergency_button emergency_button =new Emergency_button();
-    private GPS gps=new GPS();
+    GPS gps=new GPS();
     Sensor sensor=new Sensor();
     Blood_oxy blood_oxy=new Blood_oxy();
 
