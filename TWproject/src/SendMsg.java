@@ -19,7 +19,7 @@ public class SendMsg{
             n=10;
         
     }
-    public void Decrease_n(boolean notify_accept){
+    public static void Decrease_n(boolean notify_accept){
         if(notify_accept == false){
             n-=1;
         }else if(notify_accept == true){
@@ -45,6 +45,7 @@ public class SendMsg{
             
 
         }else{
+        	SendMsg.Decrease_n(false);
             return "normal";
             
             

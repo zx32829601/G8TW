@@ -4,7 +4,7 @@ public class Wristband {
     private Emergency_button emergency_button =new Emergency_button();
     private GPS gps=new GPS();
     Sensor sensor=new Sensor();
-    private Blood_oxy blood_oxy=new Blood_oxy();
+    Blood_oxy blood_oxy=new Blood_oxy();
 
     public boolean Set_Light(boolean light){
         if (light == true){
@@ -53,7 +53,7 @@ public class Wristband {
 class Blood_oxy{
     public float bloodoxy;
 
-    public void Set_bloodoxy(float blood){
+    public void Set_blood_oxy(float blood){
         this.bloodoxy=blood;
 
     }

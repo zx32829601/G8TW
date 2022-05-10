@@ -26,7 +26,7 @@ public class Controller  {
     public static String Record_Heart_Rhythm(int heart_rhythm){
         return Determine_health_condition.Determine(heart_rhythm);
     }
-    public String Get_Message(){
+    public static String Get_Message(){
         return SendMsg.Send_Message();
     }
     public boolean Get_Light(){
