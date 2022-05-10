@@ -45,7 +45,7 @@ public class SendMsg{
             
 
         }else{
-        	SendMsg.Decrease_n(false);
+        	
             return "normal";
             
             
