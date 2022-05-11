@@ -1,24 +1,25 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.mysql.jdbc.PreparedStatement;
 
 public class Mysqlmanager {
-	
-	public static void connect() {
-        String sql="insert into condition_info values(default,102,98.3,'abnormal',40.123456789,39.12345678)";
-
+	Connection con;
+	public void connect() {
+		
+		
+        
 		try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection(
+            con=DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/Condition?useSSL=false" ,"root","zxc12345");
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from condition_info");
-            PreparedStatement ps=(PreparedStatement) con.prepareStatement(sql);
-            ps.executeUpdate();
+            
             while(rs.next()) {
                 System.out.println(rs.getString("Time"));	
 
@@ -29,7 +30,14 @@ public class Mysqlmanager {
         {
             System.out.println(e);
         }
-    }  
+    }
+	public void Insert_Condition(int HR,double BO,String state,double lng,double lati) throws SQLException {
+		String sql=String.format("insert into condition_info values(default,%d,%f,'%s',%f,%f)",HR,BO, state, lng, lati);
+		System.out.println(sql);
+		PreparedStatement ps=(PreparedStatement) con.prepareStatement(sql);
+        ps.executeUpdate();
+		
+	}
 	}
 
 	

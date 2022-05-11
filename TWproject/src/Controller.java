@@ -1,7 +1,9 @@
+import java.sql.SQLException;
+
 import javax.swing.text.html.HTMLDocument.BlockElement;
 
 public class Controller  {
-    private int heart_rhythm;
+    private static int heart_rhythm;
     private double longgps;
     private double latigps;
     private boolean button;
@@ -13,7 +15,7 @@ public class Controller  {
 
     private int Abnomrmal_Heart_Rythm;
    
-    public int Get_Heartrhythm(){
+    public static int Get_Heartrhythm(){
         return heart_rhythm;
     }
     public double Get_LongGPS(){
@@ -38,8 +40,9 @@ public class Controller  {
     public String Get_Sos(){
         return "";
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Wristband wristband=new Wristband();
+        Mysqlmanager mysqlmanager=new Mysqlmanager();
         wristband.sensor.Set_Heartrhythm(140);  
         System.out.println(wristband.sensor.Get_Heartrhythm());
         System.out.println(Controller.Record_Heart_Rhythm(wristband.sensor.Get_Heartrhythm()));
@@ -57,9 +60,11 @@ public class Controller  {
         System.out.println(Controller.Get_Message());
         wristband.blood_oxy.Set_blood_oxy(98);
         System.out.println(wristband.blood_oxy.Get_bloodoxy());
-        wristband.gps.Set_GPS(14030.24,149592.0);
+        wristband.gps.Set_GPS(40.123456789,60.12345678);
         System.out.println(wristband.gps.Get_LatutudeGPS());
         System.out.println(wristband.gps.Get_LongGPS());
-        Mysqlmanager.connect();
+        mysqlmanager.connect();
+        mysqlmanager.Insert_Condition(wristband.sensor.Get_Heartrhythm(), wristband.blood_oxy.Get_bloodoxy(), Controller.Get_Message(), wristband.gps.Get_LongGPS(), wristband.gps.Get_LatutudeGPS());
+        
     }
 }
