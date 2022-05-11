@@ -48,6 +48,11 @@ public class Controller  {
         System.out.println(wristband.sensor.Get_Heartrhythm());
         Controller.Record_Heart_Rhythm(wristband.sensor.Get_Heartrhythm());
         SendMsg.Decrease_n(false);
+        System.out.println(Controller.Get_Message());
+        wristband.sensor.Set_Heartrhythm(60);
+        System.out.println(wristband.sensor.Get_Heartrhythm());
+        Controller.Record_Heart_Rhythm(wristband.sensor.Get_Heartrhythm());
+        SendMsg.Decrease_n(true);
         
         System.out.println(Controller.Get_Message());
         wristband.blood_oxy.Set_blood_oxy(98);
@@ -55,5 +60,6 @@ public class Controller  {
         wristband.gps.Set_GPS(14030.24,149592.0);
         System.out.println(wristband.gps.Get_LatutudeGPS());
         System.out.println(wristband.gps.Get_LongGPS());
+        Mysqlmanager.connect();
     }
 }
